@@ -1,6 +1,6 @@
 <?php
-  include "PHPMailer.php";
-
+  include "PHPMail.php";
+  include "emailvalidation.php"
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,19 +9,22 @@
 </head>
 <body>
   <form method="post" action="">
-    Email: <input type="email" name="email" value="<?php echo $email; ?>" /><br><br>
+    Email: <input type="email" name="email" value="<?php echo $_POST["email"]; ?>" /><br><br>
     <input type="submit" name="submit"/>
   </form>
   <?php
     if(isset($_POST["submit"])){
-      $email = $_POST["email"];
-        $mail->addAddress($email, 'Mailer');
-        if (!$mail->send()) {
-            echo 'Mailer Error: ' . $mail->ErrorInfo;
-        } else {
-            echo 'Message sent!';
-          }
+
+      $email = new emailvalidation($_POST["email"]);
+      // var_dump($email);
+      // echo $email->validate();
+      if($email->validate()){
+            $mail = new PHPMail;
+            $mail->sentto($_POST["email"]);
+      } else {
+        echo "fill a valid email";
       }
+    }
     ?>
 </body>
 </html>
