@@ -1,5 +1,6 @@
 <?php
   include "PHPMailer.php";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,7 +14,8 @@
   </form>
   <?php
     if(isset($_POST["submit"])){
-        $mail->addAddress('kartik.goyal@innoraft.com', 'Mailer');
+      $email = $_POST["email"];
+        $mail->addAddress($email, 'Mailer');
         if (!$mail->send()) {
             echo 'Mailer Error: ' . $mail->ErrorInfo;
         } else {
