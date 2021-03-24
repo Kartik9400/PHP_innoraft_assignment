@@ -1,0 +1,37 @@
+
+#box{
+  max-width: 1000px;
+  margin: auto;
+}
+p{
+  text-align: center;
+  color: black;
+}
+.boxleft{
+  float: left;
+  width: 50%;
+  margin: auto;
+  box-sizing: border-box;
+  height: 220px;
+  /*border: 1px solid black;*/
+}
+.boxright{
+  float: right;
+  width: 50%;
+  margin: auto;
+  box-sizing: border-box;
+  height: 220px;
+  /*border: 1px solid blue;*/
+}
+.boxsmall:after{
+  content: "";
+  display: table;
+  clear: both;
+}
+a{
+  text-decoration: none;
+}
+span{
+  font-size: xx-large;
+}
+
