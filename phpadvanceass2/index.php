@@ -1,11 +1,11 @@
 <?php
   include "PHPMail.php";
-  include "emailvalidation.php"
+  include "EmailValidation.php"
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>Send a thankyou mail</title>
 </head>
 <body>
   <form method="post" action="">
@@ -14,10 +14,7 @@
   </form>
   <?php
     if(isset($_POST["submit"])){
-
-      $email = new emailvalidation($_POST["email"]);
-      // var_dump($email);
-      // echo $email->validate();
+      $email = new EmailValidation($_POST["email"]);
       if($email->validate()){
             $mail = new PHPMail;
             $mail->sentto($_POST["email"]);
