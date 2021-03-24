@@ -13,7 +13,7 @@
         $json = curl_exec($ch);
         curl_close($ch);
         $result = json_decode($json, true);
-        return $result["format_valid"] & $result["smtp_check"];
+        return $result["format_valid"] and $result["smtp_check"];
       } else{
         return 0;
       }

@@ -30,11 +30,11 @@ class PHPMail{
 
   function sentto($email){
     $this->mail->addAddress($email, 'Mailer');
-          if (!$this->mail->send()) {
-              echo 'Mailer Error: ' . $mail->ErrorInfo;
-          } else {
-              echo 'Message sent!';
-            }
+    if (!$this->mail->send()) {
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
+    } else {
+        echo 'Message sent!';
+      }
   }
 }
 
