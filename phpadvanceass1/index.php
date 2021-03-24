@@ -10,19 +10,19 @@ $result = $obj->get_file();
 // $content_list = array();
 // $imge = array();
 foreach($result as $value){
-  $var1 = $value->attributes;
-  $var11 = $var1->field_secondary_title;
-  if(!is_null($var11)){
-    $headings[$var1->title] = $var11->value;
-    $var12 = $var1->field_services;
-    $content_list[$var1->title] = $var12->value;
+  $attributes = $value->attributes;
+  $sec_title = $attributes->field_secondary_title;
+  if(!is_null($sec_title)){
+    $headings[$attributes->title] = $sec_title->value;
+    $services = $attributes->field_services;
+    $content_list[$attributes->title] = $services->value;
   }
-  $var2 = new Fetch($value->relationships->field_image->links->related->href);
-  $var21 = $var2->get_file()->attributes->uri->url;
-  $var21 = "https://www.innoraft.com" . $var21;
-  //  echo $var21;
-  // echo "<img src ='".$var21."' width='100'>";
-  $imge[$var1->title] = $var21;
+  $img_json_file = new Fetch($value->relationships->field_image->links->related->href);
+  $img_url = $img_json_file->get_file()->attributes->uri->url;
+  $img_url = "https://www.innoraft.com" . $img_url;
+  //  echo $img_url;
+  // echo "<img src ='".$img_url."' width='100'>";
+  $imge[$attributes->title] = $img_url;
 }
 // var_dump($headings);
 // var_dump($content_list);
