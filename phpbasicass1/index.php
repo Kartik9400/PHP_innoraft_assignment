@@ -28,7 +28,10 @@
 
   <?php
   if(isset($_POST["submit"])){
-    echo "Hello ";
+    if($fname->value or $lname->value){
+      echo "Hello ";
+    }
+
     echo $fname->value.' '.$lname->value;
   }
   ?>
