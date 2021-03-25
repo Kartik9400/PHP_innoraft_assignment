@@ -9,7 +9,7 @@
       } else{
 
         if(!preg_match("/^[a-zA-Z-' ]*$/", $name)){
-          $Err = "First name contain only alphabetic letter";
+          $this->Err = "First name contain only alphabetic letter";
         } else {
           $this->value = $name;
         }
