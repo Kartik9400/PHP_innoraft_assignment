@@ -1,7 +1,7 @@
  <?php
     // $marks=array();
     class AddMarksField{
-      public $Val;
+      public $Val = array("Subject", "Marks");
       public $Err = "";
 
       function __construct($marks){
@@ -14,8 +14,6 @@
 
       function output(){
         echo "<table border='1px solid black'>";
-        echo "<th>Subjects</th>";
-        echo "<th>Marks</th>";
           for ($i=0; $i < count($this->Val); $i+=2) {
               $j = $i + 1;
 

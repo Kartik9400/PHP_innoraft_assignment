@@ -1,7 +1,7 @@
 <?php
 
   class EmailValidation{
-    public $value;
+    public $value = "";
     function __construct($email) {
       $this->value = $email;
     }
