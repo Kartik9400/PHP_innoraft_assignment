@@ -5,14 +5,12 @@ include "Fetch.php";
 <?php
 $obj = new Fetch("https://www.innoraft.com/jsonapi/node/services");
 $result = $obj->get_file();
-// var_dump($result);
-// $headings = array();
-// $content_list = array();
-// $imge = array();
+
 foreach($result as $value){
   $attributes = $value->attributes;
   $sec_title = $attributes->field_secondary_title;
   if(!is_null($sec_title)){
+    $order[$attributes->field_item_weight] = $attributes->title;
     $headings[$attributes->title] = $sec_title->value;
     $services = $attributes->field_services;
     $content_list[$attributes->title] = $services->value;
@@ -20,14 +18,8 @@ foreach($result as $value){
   $img_json_file = new Fetch($value->relationships->field_image->links->related->href);
   $img_url = $img_json_file->get_file()->attributes->uri->url;
   $img_url = "https://www.innoraft.com" . $img_url;
-  //  echo $img_url;
-  // echo "<img src ='".$img_url."' width='100'>";
   $imge[$attributes->title] = $img_url;
 }
-// var_dump($headings);
-// var_dump($content_list);
-// var_dump($imge);
-// echo "<img src ='"."/sites/default/files/2020-07/img-1.jpg"."' width='100'>";
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,16 +33,17 @@ foreach($result as $value){
     <!-- 1 -->
     <?php
       $flag = 0;
-      foreach ($headings as $key => $value) {
+      ksort($order);
+      foreach ($order as $key => $value) {
         # code...
         if ($flag == 0) {
           echo '<div class = "smallbox">';
           echo '<div class = "boxleft">';
-          echo "<img src ='".$imge[$key]."' width='250'>";
+          echo "<img src ='".$imge[$value]."' width='250'>";
           echo '</div>';
           echo '<div class = "boxright">';
-          echo $value;
-          echo $content_list[$key];
+          echo $headings[$value];
+          echo $content_list[$value];
           echo "<button>Explore more</button>";
           echo '</div>';
           echo '</div>';
@@ -58,12 +51,12 @@ foreach($result as $value){
         } else {
           echo '<div class = "smallbox">';
           echo '<div class = "boxleft">';
-          echo $value;
-          echo $content_list[$key];
+          echo $headings[$value];
+          echo $content_list[$value];
           echo "<button>Explore more</button>";
           echo '</div>';
           echo '<div class = "boxright">';
-          echo "<img src ='".$imge[$key]."' width='250'>";
+          echo "<img src ='".$imge[$value]."' width='250'>";
           echo '</div>';
           echo '</div>';
           $flag = 0;
