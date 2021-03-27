@@ -1,7 +1,6 @@
 <?php
-  ob_start();
-  header("Content-type: application/vnd.ms-word");
-  header("Content-Disposition: attachment; filename=myfile.doc");
+  include "SaveInfo.php";
+  $user = new SaveInfo();
   session_start();
 
 
@@ -33,8 +32,7 @@ echo $PhoneVal;
 echo "<br>";
 echo $EmailVal;
 $content = ob_get_contents();
-file_put_contents("myfile.doc", $content);
-ob_end_clean();
+$user->GetContent($content);
       // flush();
 echo $content;
 ?>
