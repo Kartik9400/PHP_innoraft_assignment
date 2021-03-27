@@ -3,7 +3,7 @@
     public $uploadOk = 1;
     public $path = "";
     public $val = "";
-    public $Err = "File not uploaded";
+    public $Err = "";
     function __construct($tmp_path, $img_name){
       $check = getimagesize($tmp_path);
       $this->path = $img_name;
