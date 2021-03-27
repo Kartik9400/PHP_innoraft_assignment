@@ -6,7 +6,7 @@
     public $Err = "";
     function __construct($tmp_path, $img_name){
       $check = getimagesize($tmp_path);
-      $this->path = "../Class/".$img_name;
+      $this->path = $img_name;
       if($check !== false){
         if(move_uploaded_file($tmp_path, $this->path)){
           $this->val = "file uploaded";
