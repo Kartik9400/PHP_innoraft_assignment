@@ -10,15 +10,15 @@ foreach($result as $value){
   $attributes = $value->attributes;
   $sec_title = $attributes->field_secondary_title;
   if(!is_null($sec_title)){
-    $order[$attributes->field_item_weight] = $attributes->title;
-    $headings[$attributes->title] = $sec_title->value;
-    $services = $attributes->field_services;
-    $content_list[$attributes->title] = $services->value;
+      $order[$attributes->field_item_weight]["title"] = $sec_title->value;
+      $services = $attributes->field_services;
+      $order[$attributes->field_item_weight]["services"] = $services->value;
+      $img_json_file = new Fetch($value->relationships->field_image->links->related->href);
+      $img_url = $img_json_file->get_file()->attributes->uri->url;
+      $img_url = "https://www.innoraft.com" . $img_url;
+      $order[$attributes->field_item_weight]["images"] = $img_url;
   }
-  $img_json_file = new Fetch($value->relationships->field_image->links->related->href);
-  $img_url = $img_json_file->get_file()->attributes->uri->url;
-  $img_url = "https://www.innoraft.com" . $img_url;
-  $imge[$attributes->title] = $img_url;
+
 }
 ?>
 <!DOCTYPE html>
@@ -36,31 +36,17 @@ foreach($result as $value){
       ksort($order);
       foreach ($order as $key => $value) {
         # code...
-        if ($flag == 0) {
           echo '<div class = "smallbox">';
           echo '<div class = "boxleft">';
-          echo "<img src ='".$imge[$value]."' width='250'>";
+          echo "<img src ='".$value["images"]."' width='250'>";
           echo '</div>';
           echo '<div class = "boxright">';
-          echo $headings[$value];
-          echo $content_list[$value];
+          echo $value["title"];
+          echo $value["services"];
           echo "<button>Explore more</button>";
           echo '</div>';
           echo '</div>';
-          $flag = 1;
-        } else {
-          echo '<div class = "smallbox">';
-          echo '<div class = "boxleft">';
-          echo $headings[$value];
-          echo $content_list[$value];
-          echo "<button>Explore more</button>";
-          echo '</div>';
-          echo '<div class = "boxright">';
-          echo "<img src ='".$imge[$value]."' width='250'>";
-          echo '</div>';
-          echo '</div>';
-          $flag = 0;
-        }
+
       }
     ?>
   </div>

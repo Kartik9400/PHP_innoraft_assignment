@@ -7,8 +7,15 @@ p{
   text-align: center;
   color: black;
 }
+.smallbox{
+  display: flex;
+}
+.smallbox:nth-child(odd){
+
+  flex-direction: row-reverse;
+}
 .boxleft{
-  float: left;
+  /*float: left;*/
   width: 50%;
   margin: auto;
   box-sizing: border-box;
@@ -16,17 +23,12 @@ p{
   /*border: 1px solid black;*/
 }
 .boxright{
-  float: right;
+  /*float: left;*/
   width: 50%;
   margin: auto;
   box-sizing: border-box;
   height: 220px;
   /*border: 1px solid blue;*/
-}
-.boxsmall:after{
-  content: "";
-  display: table;
-  clear: both;
 }
 a{
   text-decoration: none;
