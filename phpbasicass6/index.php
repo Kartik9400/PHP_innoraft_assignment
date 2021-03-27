@@ -71,8 +71,25 @@
     <input type = "submit" name = "submit" value = "Submit"><br><br>
   </form>
   <?php
-    if (isset($_POST["submit"]) and empty($fnameErr) and empty($lnameErr) and empty($imgErr) and empty($PhoneErr) and empty($EmailErr)) {
-      header("Location:nextfile.php");
+    if (isset($_POST["submit"])){
+      if(!empty($fnameErr)) {
+        echo "first name not entered";
+      }
+        elseif (!empty($lnameErr)) {
+          echo "last name not entered";
+        }
+        elseif (!empty($imgErr)) {
+          echo "image err is not entered";
+        }
+        elseif (!empty($PhoneErr)) {
+          echo "phone num not entered";
+        }
+        elseif(!empty($EmailErr)) {
+          echo "email not entered";
+        }
+        else {
+          header("Location:nextfile.php");
+        }
       }
       ?>
 </body>

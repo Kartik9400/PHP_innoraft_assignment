@@ -1,6 +1,9 @@
 <?php
+  ob_start();
+  header("Content-type: application/vnd.ms-word");
+  header("Content-Disposition: attachment; filename=myfile.doc");
   session_start();
-  include "../Class/SaveInfo.php";
+
 
   $Fname = $_SESSION["FirstName"];
   $Lname = $_SESSION["LastName"];
@@ -8,7 +11,8 @@
   $MarksValue = $_SESSION["marks_value"];
   $PhoneVal = $_SESSION["phone_val"];
   $EmailVal = $_SESSION["email_val"];
-  $user = new SaveInfo();
+  // $user = new SaveInfo();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,18 +21,22 @@
 </head>
 <body>
 <?php
-ob_start();
-echo 'hello ';
+
+echo "hello ";
 echo $Fname.' '.$Lname;
-echo '\n';
-echo '<img src = "'.'../Class/'.$img_name.'">';
-echo '\n';
+echo "<br>";
+echo "<img src = '".__DIR__."/".$img_name."'>";
+echo "<br>";
 echo $MarksValue;
-echo '\n';
+echo "<br>";
 echo $PhoneVal;
-echo '\n';
+echo "<br>";
 echo $EmailVal;
-$user->GetContent();
+$content = ob_get_contents();
+file_put_contents("myfile.doc", $content);
+ob_end_clean();
+      // flush();
+echo $content;
 ?>
 </body>
 </html>
