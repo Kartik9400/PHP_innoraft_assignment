@@ -1,0 +1,20 @@
+#boxrow{
+  display: block;
+  /*flex-direction: row-reverse;*/
+  }
+#block1{
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+#block1:nth-child(even){
+ background-color: black;
+}
+#block2{
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+#block2:nth-child(odd){
+ background-color: black;
+}
