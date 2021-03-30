@@ -1,7 +1,8 @@
 <?php
   class ComputerRPS{
     public $computer;
-    function __constuct(){
+    public $arr = array();
+    function __construct(){
       $tmpValue = rand(1,3);
       if ($tmpValue==1) {
         $this->computer = 'r';
@@ -10,6 +11,10 @@
       } elseif ($tmpValue==3) {
         $this->computer = 's';
       }
+      $this->arr["pr"] = $this->arr["rs"] = $this->arr["sp"] = 2;
+      $this->arr["pp"] = $this->arr["rr"] = $this->arr["ss"] = 1;
+      $this->arr["rp"] = $this->arr["sr"] = $this->arr["ps"] = 0;
+
     }
 
     function validate($content){
@@ -21,27 +26,10 @@
     }
 
     function check($RPS){
-      if($RPS === $this->computer) {
-          echo "draw";
-        } elseif ($RPS == 'r') {
-          if($this->computer == 'p') {
-            echo "computer wins";
-          } else {
-            echo "user wins";
-          }
-        } elseif ($RPS == 'p') {
-          if($this->computer == 's') {
-            echo "computer wins";
-          } else {
-            echo "user wins";
-          }
-        } else {
-          if($this->computer == 'r'){
-            echo "computer wins";
-          } else {
-            echo "user wins";
-          }
-        }
+      $index = $RPS.$this->computer;
+      echo ($this->arr[$index]==2 ? "user wins" :
+        ($this->arr[$index]==1 ? "Draw" :
+         "Computer wins"));
     }
   }
  ?>

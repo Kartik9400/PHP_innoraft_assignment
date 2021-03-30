@@ -16,8 +16,8 @@
 
     if(isset($_POST["submit"])){
       $RPS = new ComputerRPS();
-      if($RPS->validate($_POST["RPS"])){
-        $computer = $RPS->check($_POST["RPS"]);
+      if(isset($RPS) and $RPS->validate($_POST["RPS"])){
+        $RPS->check($_POST["RPS"]);
       } else {
         echo "entered wrong value";
       }
