@@ -1,6 +1,6 @@
 <?php
-  include 'ChessBoard.php';
- ?>
+  require 'ChessBoard.php';
+?>
  <!DOCTYPE html>
  <html>
  <head>
@@ -13,9 +13,9 @@
   </form>
   <?php
     if (isset($_POST["submit"])) {
-      // echo $_POST["box"];
-      $board = new ChessBoard($_POST["box"]);
+        // echo $_POST["box"];
+        $board = new ChessBoard($_POST["box"]);
     }
-   ?>
+    ?>
  </body>
  </html>
