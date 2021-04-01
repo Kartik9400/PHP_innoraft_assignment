@@ -1,6 +1,9 @@
 <?php
+  /**
+   * [@file new password changes user password temporarely]
+   */
   session_start();
- ?>
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +17,8 @@
 
   <?php
     if (isset($_POST["submit"])) {
-
-      $_SESSION[$_SESSION["tmp_user"]][0] = $_POST["password"];
-      echo "password is succesfully changed";
+        $_SESSION[$_SESSION["tmp_user"]][0] = $_POST["password"];
+        echo "password is succesfully changed";
     }
     ?>
 </body>

@@ -1,7 +1,7 @@
 <?php
   session_start();
   include 'LossPassword.php';
- ?>
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,11 +16,12 @@
   </form>
 
   <?php
-    if(isset($_POST["submit"])) {
-      $_SESSION["tmp_user"] = $_POST["user"];
+    if (isset($_POST["submit"])) {
+        //created a sesston variavle so not to take username again
+        $_SESSION["tmp_user"] = $_POST["user"];
+        //created an object
         $credential = new LossPassword($_POST["user"], $_POST["subject"]);
-
     }
-  ?>
+    ?>
 </body>
 </html>
