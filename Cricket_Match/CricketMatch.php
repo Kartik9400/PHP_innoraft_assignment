@@ -12,38 +12,7 @@ class CricketMatch
     public $MaxScoreInAMatch = array();
 
     //M=Match, T=Team, P=Player
-    public $report = array(
-      // "M1"=>
-      //   array("T1"=>
-      //           array("T1P1"=>"", "T1P2"=>"", "T1P3"=>"", "T1P4"=>"", "T1P5"=>""),
-      //         "T2"=>
-      //           array("T2P1"=>"", "T2P2"=>"", "T2P3"=>"", "T2P4"=>"", "T2P5"=>"")),
-      // "M2"=>
-      //   array("T1"=>
-      //           array("T1P1"=>"", "T1P2"=>"", "T1P3"=>"", "T1P4"=>"", "T1P5"=>""),
-      //         "T3"=>
-      //           array("T3P1"=>"", "T3P2"=>"", "T3P3"=>"", "T3P4"=>"", "T3P5"=>"")),
-      // "M3"=>
-      //   array("T1"=>
-      //           array("T1P1"=>"", "T1P2"=>"", "T1P3"=>"", "T1P4"=>"", "T1P5"=>""),
-      //         "T4"=>
-      //           array("T4P1"=>"", "T4P2"=>"", "T4P3"=>"", "T4P4"=>"", "T4P5"=>"")),
-      // "M4"=>
-      //   array("T3"=>
-      //           array("T3P1"=>"", "T3P2"=>"", "T3P3"=>"", "T3P4"=>"", "T3P5"=>""),
-      //         "T2"=>
-      //           array("T2P1"=>"", "T2P2"=>"", "T2P3"=>"", "T2P4"=>"", "T2P5"=>"")),
-      // "M5"=>
-      //   array("T4"=>
-      //           array("T4P1"=>"", "T4P2"=>"", "T4P3"=>"", "T4P4"=>"", "T4P5"=>""),
-      //         "T2"=>
-      //           array("T2P1"=>"", "T2P2"=>"", "T2P3"=>"", "T2P4"=>"", "T2P5"=>"")),
-      // "M6"=>
-      //   array("T3"=>
-      //           array("T3P1"=>"", "T3P2"=>"", "T3P3"=>"", "T3P4"=>"", "T3P5"=>""),
-      //         "T4"=>
-      //           array("T4P1"=>"", "T4P2"=>"", "T4P3"=>"", "T4P4"=>"", "T4P5"=>""))
-      );
+    public $report = array();
 
     /**
      * [__construct give values to players and compute highest scorer player]
