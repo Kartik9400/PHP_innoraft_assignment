@@ -14,10 +14,10 @@
   </form>
 
   <?php
-    if (isset($_POST["submit"])) {
-      $tble = new FormTable($_POST["row"], $_POST["column"]);
-      $tble->view();
+    if (isset($_POST["submit"]) and isset($_POST['row']) and isset($_POST['column'])) {
+        $tble = new FormTable($_POST["row"], $_POST["column"]);
+        $tble->view();
     }
-  ?>
+    ?>
 </body>
 </html>
