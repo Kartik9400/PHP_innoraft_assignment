@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>compare the arrays</title>
 </head>
 <body>
   <form method = "post" action = "<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>">
@@ -15,13 +15,13 @@
   </form>
   <?php
     if (isset($_POST["submit"])) {
-      $createArr = new createArr($_POST["row"], $_POST["column"]);
-      $Arr = $createArr->putValue();
-      // var_dump($Arr);
-      $compare = new compare($Arr);
-      $compare->diff();
+        $createArr = new createArr($_POST["row"], $_POST["column"]);
+        $Arr = $createArr->putValue();
+        // var_dump($Arr);
+        $compare = new compare($Arr);
+        $compare->diff();
     }
-  ?>
+    ?>
 
 </body>
 </html>
