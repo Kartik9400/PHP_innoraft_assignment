@@ -14,7 +14,7 @@ class Fetch
      */
     function __construct($data)
     {
-        $Token = "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";
+        $Token = "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";
         $url = "https://api.github.com/gists";
         $client = new GuzzleHttp\Client();
         $response = $client->post(
