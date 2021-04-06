@@ -25,7 +25,7 @@ class CreateGist
     {
         $fetch = new Fetch($this->data);
         echo "<br><br>";
-        echo "<a href = '$fetch->link'>Gists link</a>";
+        $fetch->getlink();
     }
 }
 

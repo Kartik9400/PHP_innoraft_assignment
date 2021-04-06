@@ -14,7 +14,7 @@ class Fetch
      */
     function __construct($data)
     {
-        $Token = "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";
+        $Token = "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";
         $url = "https://api.github.com/gists";
         $client = new GuzzleHttp\Client();
         $response = $client->post(
@@ -23,6 +23,16 @@ class Fetch
             ,'body'=>$data]
         );
         $this->link = json_decode($response->getBody())->html_url;
+    }
+
+    /**
+     * [getlink create a link of generated gists]
+     *
+     * @return [null] []
+     */
+    function getlink()
+    {
+        echo "<a href = '$this->link'>Gists link</a>";
     }
 
 }
