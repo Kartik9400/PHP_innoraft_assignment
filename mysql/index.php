@@ -1,6 +1,7 @@
 <?php
   require 'Query.php';
   require 'Insert.php';
+  require 'Check.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,21 +18,22 @@
 
     ?>
   <form method = "post" action = "<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
-    Employee Id: <input type="textbox" name="employee_id">
+    Employee Id: <input type="textbox" name="employee_id" required>
     <br><br>
-    Employee first name: <input type="textbox" name="employee_first_name">
+    Employee first name: <input type="textbox" name="employee_first_name" required>
     <br><br>
     Employee last name: <input type="textbox" name="employee_last_name">
     <br><br>
-    Graduation percentile: <input type="textbox" name="Graduation_percentile">
+    Graduation percentile: <input type="textbox" name="Graduation_percentile"
+    required>
     <br><br>
-    Employee salary: <input type="textbox" name="employee_salary">
+    Employee salary: <input type="textbox" name="employee_salary" required>
     <br><br>
     Employee code: <input type="textbox" name="employee_code">
     <br><br>
-    Employee code name: <input type="textbox" name="employee_code_name">
+    Employee code name: <input type="textbox" name="employee_code_name" required>
     <br><br>
-    Employee Domain: <input type="textbox" name="employee_domain">
+    Employee Domain: <input type="textbox" name="employee_domain" required>
     <br><br>
     <input type="submit" name="submit" value="Insert data">
   </form>
@@ -39,17 +41,27 @@
   <?php
     //enter value inside employee detail table
     if ($_REQUEST['submit']=='Insert data') {
-        $insert = new Insert();
-        $insert->insertData(
-            $_POST['employee_id'],
-            $_POST['employee_first_name'],
-            $_POST['employee_last_name'],
-            $_POST['Graduation_percentile'],
-            $_POST['employee_salary'],
-            $_POST['employee_code'],
-            $_POST['employee_code_name'],
-            $_POST['employee_domain']
-        );
+
+        $validate = new Check;
+        if ($validate->validateName($_POST['employee_first_name'])
+            and $validate->validateName($_POST['employee_last_name'])
+            and $validate->validateId($_POST['employee_id'])
+            and $validate->validatepercentile($_POST['Graduation_percentile'])
+            and $validate->validatesalary($_POST['employee_salary'])
+        ) {
+            $insert = new Insert();
+            $insert->insertData(
+                $_POST['employee_id'],
+                $_POST['employee_first_name'],
+                $_POST['employee_last_name'],
+                $_POST['Graduation_percentile'],
+                $_POST['employee_salary'],
+                $_POST['employee_code'],
+                $_POST['employee_code_name'],
+                $_POST['employee_domain']
+            );
+        }
+
     }
     ?>
   <br><br>

@@ -58,7 +58,7 @@ class Insert
         VALUES ('$employee_id', '$employee_first_name'
         , '$employee_last_name', '$Graduation_percentile')";
         //checking query entered successfully
-        if ($this->conn->query($sql1) === true and $this->conn->query($sql2) === true and $this->conn->query($sql3) === true) {
+        if ($this->conn->query($sql2) === true and $this->conn->query($sql1) === true and $this->conn->query($sql3) === true) {
             echo "entry successfully";
         } else {
             echo "Error creating table: " . $this->conn->error;
