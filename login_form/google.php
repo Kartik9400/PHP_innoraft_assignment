@@ -4,8 +4,11 @@ require_once 'vendor/autoload.php';
 session_start();
 
 $client = new Google_Client();
-$client->setAuthConfig('client_secrets.json');
-$client->addScope("email");
+$client->setAuthConfigFile('client_secrets.json');
+$client->setApprovalPrompt("consent");
+$client->setIncludeGrantedScopes(true);   // incremental auth
+$client->addScope(Google_Service_Oauth2::USERINFO_EMAIL);
+$client->addScope("profile");
 // $client->addScope(Google_Service_Oauth2::USERINFO_PROFILE);
 
 if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {

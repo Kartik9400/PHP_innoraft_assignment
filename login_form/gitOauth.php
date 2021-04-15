@@ -5,8 +5,10 @@ session_start();
 if (!isset($_GET['code'])) {
     goToAuthUrl();
 }
-fetchUrl();
-getData();
+$access_token = getAccessToken($_GET['code']);
+echo apiRequest($access_token);
+//fetchUrl();
+//getData();
 ?>
 <!DOCTYPE html>
 <html>
