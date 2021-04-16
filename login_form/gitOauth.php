@@ -1,12 +1,14 @@
 <?php
-require 'github.php';
+require 'Github.php';
 session_start();
 
-if (!isset($_GET['code'])) {
-    goToAuthUrl();
+$gitfetch = new GitHub();
+if (!isset($_SESSION['access_token'])) {
+    $_SESSION['access_token'] = $gitfetch->getAccessToken($_GET['code']);
 }
-$access_token = getAccessToken($_GET['code']);
-echo apiRequest($access_token);
+$data = $gitfetch->getData();
+
+
 //fetchUrl();
 //getData();
 ?>

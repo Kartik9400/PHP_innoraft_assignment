@@ -1,3 +1,6 @@
+<?php
+require 'Github.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,6 +8,13 @@
 </head>
 <body>
   <a href = 'google.php'>Signin with google</a>
-  <a href = 'gitOauth.php'>Signin with github</a>
+  <?php
+    if (!isset($_GET['code'])) {
+        $githubURI = new Github();
+        $url = $githubURI->goToAuthUrl();
+        echo "<a  href = '". $url ."'><h2>Github Login</h2></a>";
+    }
+    ?>
+
 </body>
 </html>
