@@ -8,8 +8,8 @@
 
 </head>
 <body>
-    First number: <input type="number" name="input1" id="input1" required/><br><br>
-    Second number: <input type="number" name="input2" id="input2" required/><br><br>
+    First number: <input type="text" name="input1" id="input1" required/><br><br>
+    Second number: <input type="text" name="input2" id="input2" required/><br><br>
     Operator: <select id="operator">
       <option>Select an operator</option>
 
@@ -43,7 +43,7 @@
           var inp1 = document.getElementById("input1").value;
           var inp2 = document.getElementById("input2").value;
           var operator = document.getElementById("operator").value;
-          var datastring = "name="+inp1+"&id="+inp2+"&op="+operator;
+          var datastring = "num1="+inp1+"&num2="+inp2+"&op="+operator;
           ajax.open( "POST", "ajax.php", true);
           ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
           ajax.send(datastring);

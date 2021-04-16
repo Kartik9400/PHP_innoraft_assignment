@@ -4,7 +4,11 @@
  */
 require 'Calculator.php';
 $cal = new Calculator;
-$a = $_POST['name'];
-$b = $_POST['id'];
-$op = $_POST['op'];
-$cal->calc($a, $b, $op);
+if ($cal->check($_POST['num1']) and $cal->check($_POST['num2'])) {
+    $a = $_POST['num1'];
+    $b = $_POST['num2'];
+    $op = $_POST['op'];
+    $cal->calc($a, $b, $op);
+} else {
+    echo "entered value not a number";
+}
