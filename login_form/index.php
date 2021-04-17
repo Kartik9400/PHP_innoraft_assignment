@@ -1,5 +1,6 @@
 <?php
 require 'Github.php';
+require 'Oauth2Google.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,12 +8,15 @@ require 'Github.php';
   <title>login form</title>
 </head>
 <body>
-  <a href = 'google.php'>Signin with google</a>
   <?php
-    if (!isset($_GET['code'])) {
+    if (! isset($_GET['code'])) {
+        $googleURI = new Oauth2Google();
+        $url1 = $googleURI->getUrl();
         $githubURI = new Github();
-        $url = $githubURI->goToAuthUrl();
-        echo "<a  href = '". $url ."'><h2>Github Login</h2></a>";
+        $url2 = $githubURI->goToAuthUrl();
+        echo "<a  href = '". $url1 ."'><h2>Google Login</h2></a>";
+        echo "<br><br>";
+        echo "<a  href = '". $url2 ."'><h2>Github Login</h2></a>";
     }
     ?>
 
